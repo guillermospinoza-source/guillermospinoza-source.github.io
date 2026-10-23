@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Guillermo Espinoza · Portafolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Guillermo Espinoza, Querétaro. Desarrollo de herramientas digitales asistido por IA: ERP Fabricarte, Diagnóstico Capilar y web Fabricarte.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: columna editorial de 70rem; ficha lateral fija por caso; secciones separadas por reglas finas, sin tarjetas decorativas */
+:root{
+  --bg:#f5f6f4; --surface:#ffffff; --fg:#121a1f; --muted:#55626b; --line:#d8dde0;
+  --accent:#2747c9; --accent-soft:#e6eafb; --pend:#fdf1d8; --pend-fg:#7a5200; --ok:#1d7a4c;
+  --sans:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1316; --surface:#151c21; --fg:#e7ecef; --muted:#97a5ae; --line:#26323a;
+  --accent:#8ea2ff; --accent-soft:#1b2347; --pend:#3a2d0f; --pend-fg:#f1cf82; --ok:#5fd19a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1316; --surface:#151c21; --fg:#e7ecef; --muted:#97a5ae; --line:#26323a;
+  --accent:#8ea2ff; --accent-soft:#1b2347; --pend:#3a2d0f; --pend-fg:#f1cf82; --ok:#5fd19a; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font:400 1.0625rem/1.6 var(--sans);margin:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:70rem;margin:0 auto}
+a{color:var(--accent);text-underline-offset:.18em}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+h1,h2,h3,h4{margin:0;line-height:1.12;text-wrap:balance;letter-spacing:-.015em}
+p{margin:0}
+.label{font:500 .72rem/1.2 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--mono)}
+.pend{background:var(--pend);color:var(--pend-fg);border-radius:4px;padding:.05em .4em;font-size:.92em}
+.pend::before{content:"Pendiente · ";font:500 .7rem var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.tag{display:inline-block;font:400 .78rem/1 var(--mono);border:1px solid var(--line);border-radius:4px;padding:.35rem .5rem;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem}
+
+/* Barra superior */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:3.5rem}
+.bar strong{font-weight:800;letter-spacing:.02em;font-size:.95rem}
+.bar nav{display:flex;gap:1.1rem;overflow-x:auto}
+.bar nav a{color:var(--fg);text-decoration:none;font:500 .78rem var(--mono);letter-spacing:.04em;white-space:nowrap}
+.bar nav a:hover{color:var(--accent)}
+@media (max-width:640px){.bar nav a.opt{display:none}}
+
+/* Presentación */
+.hero{padding-block:3.5rem 2.5rem;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:3rem;align-items:end}
+.hero h1{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:800}
+.hero .sub{margin-top:1.1rem;font-size:1.15rem;color:var(--muted);max-width:40rem}
+.who{display:grid;gap:.9rem;border-left:1px solid var(--line);padding-left:1.5rem}
+.who div{display:grid;gap:.15rem}
+.who p{font-weight:500}
+.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.75rem}
+.btn{display:inline-flex;align-items:center;gap:.4rem;min-height:2.75rem;padding:0 1.1rem;border-radius:6px;font:600 .95rem var(--sans);text-decoration:none;border:1px solid var(--accent);cursor:pointer;background:none;color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--bg)}
+.btn[aria-disabled="true"]{border-style:dashed;color:var(--muted);border-color:var(--line);cursor:default}
+@media (prefers-reduced-motion:no-preference){.btn{transition:transform .15s}.btn:not([aria-disabled]):hover{transform:translateY(-1px)}}
+@media (max-width:820px){.hero{grid-template-columns:1fr;gap:2rem}.who{border-left:0;border-top:1px solid var(--line);padding:1.25rem 0 0;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr))}}
+
+/* Video */
+.video{border:1px dashed var(--line);border-radius:8px;background:var(--surface);aspect-ratio:16/9;max-width:100%;display:grid;place-items:center;text-align:center;padding:1.5rem}
+.video p{max-width:32rem;color:var(--muted);font-size:.95rem}
+.video b{display:block;color:var(--fg);margin-bottom:.4rem}
+
+/* Secciones */
+section.block{border-top:1px solid var(--line);padding-block:3.25rem}
+.head{display:grid;gap:.6rem;margin-bottom:2rem;max-width:44rem}
+.head h2{font-size:clamp(1.6rem,3.2vw,2.3rem);font-weight:800}
+.head p{color:var(--muted)}
+
+/* Tarjetas de proyecto */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;display:grid;grid-template-rows:auto 1fr;overflow:hidden;text-decoration:none;color:inherit}
+.card .shot{aspect-ratio:16/10;max-width:100%;border-bottom:1px solid var(--line);display:grid;place-items:center;padding:1rem;text-align:center;font:400 .78rem var(--mono);color:var(--muted);background:repeating-linear-gradient(135deg,transparent 0 10px,var(--bg) 10px 11px)}
+.card .body{padding:1.1rem 1.2rem 1.25rem;display:grid;gap:.6rem;align-content:start}
+.card h3{font-size:1.25rem;font-weight:700}
+.card .prob{font-size:.95rem;color:var(--muted)}
+.card .go{margin-top:.3rem;font:500 .85rem var(--mono);color:var(--accent)}
+.state{display:inline-flex;align-items:center;gap:.4rem;font:500 .72rem var(--mono);letter-spacing:.05em;text-transform:uppercase}
+.state::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--ok)}
+.state.wait::before{background:var(--pend-fg)}
+@media (prefers-reduced-motion:no-preference){.card{transition:border-color .15s,transform .15s}.card:hover{border-color:var(--accent);transform:translateY(-2px)}}
+@media (max-width:900px){.cards{grid-template-columns:1fr}}
+
+/* Caso de estudio */
+.case{border-top:1px solid var(--line);padding-block:3.25rem;display:grid;grid-template-columns:15rem minmax(0,1fr);gap:3rem}
+.meta{display:grid;gap:1rem;align-content:start;position:sticky;top:5rem}
+.meta div{display:grid;gap:.25rem}
+.meta p{font-size:.95rem}
+.content{min-width:0;display:grid;gap:2rem}
+.content>header h2{font-size:clamp(1.6rem,3.2vw,2.3rem);font-weight:800}
+.content>header p{margin-top:.6rem;color:var(--muted);font-size:1.1rem;max-width:42rem}
+.step h3{font-size:1.05rem;font-weight:700;margin-bottom:.45rem;display:flex;gap:.6rem;align-items:baseline}
+.step h3 .mono{font-size:.75rem;color:var(--accent);font-weight:500}
+.step p,.step ul{max-width:44rem}
+.step ul{margin:0;padding-left:1.1rem;display:grid;gap:.35rem}
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1rem 1.15rem;display:grid;gap:.4rem;align-content:start}
+.panel h4{font-size:.98rem}
+.panel p{font-size:.95rem;color:var(--muted)}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.75rem}
+.shots .ph{aspect-ratio:16/10;max-width:100%;border:1px dashed var(--line);border-radius:6px;display:grid;place-items:center;text-align:center;padding:1rem;font:400 .78rem var(--mono);color:var(--muted);background:var(--surface)}
+figure{margin:0;display:grid;gap:.4rem}
+figure img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+figcaption{font-size:.85rem;color:var(--muted)}
+.gallery{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,.6fr) minmax(0,.6fr);gap:.75rem;align-items:start}
+@media (max-width:820px){.gallery{grid-template-columns:1fr 1fr}.gallery .wide{grid-column:1/-1}}
+.gallery.erp{grid-template-columns:repeat(4,minmax(0,1fr))}
+figure video{display:block;width:100%;border-radius:6px;border:1px solid var(--line);background:#000}
+@media (max-width:820px){.gallery.erp{grid-template-columns:1fr 1fr}}
+.card .shot.real{padding:0;background:#0b0f12;position:relative;overflow:hidden}.card .shot.real img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}.card .shot.real img.v{object-position:center 62%}
+.code{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1rem 1.15rem;font:400 .85rem/1.65 var(--mono)}
+.code .c{color:var(--muted)}
+.flow{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;font:500 .85rem var(--mono)}
+.flow span{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:.45rem .65rem}
+.flow i{font-style:normal;color:var(--muted)}
+@media (max-width:820px){.case{grid-template-columns:1fr;gap:1.5rem}.meta{position:static;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr))}}
+
+/* Flujo de trabajo */
+.pipeline{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.pipeline li{list-style:none;padding:1rem .9rem;border-right:1px solid var(--line);display:grid;gap:.35rem;align-content:start}
+.pipeline li:last-child{border-right:0}
+.pipeline b{font-size:.98rem}
+.pipeline small{font-size:.82rem;color:var(--muted);line-height:1.4}
+.pipeline .mono{font-size:.7rem;color:var(--accent)}
+ol.pipeline{margin:0;padding:0}
+@media (max-width:900px){.pipeline{grid-template-columns:1fr}.pipeline li{border-right:0;border-bottom:1px solid var(--line);grid-template-columns:2rem 1fr;column-gap:.5rem}.pipeline li .mono{grid-row:span 2}.pipeline li:last-child{border-bottom:0}}
+.tools{margin-top:1.5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem}
+
+/* Tabla de competencias */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:40rem;font-size:.95rem}
+th,td{text-align:left;padding:.85rem 1rem;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font:500 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td:first-child{font-weight:600;width:30%}
+.lvl{font:500 .72rem var(--mono);letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
+.lvl.ok{color:var(--ok)}.lvl.learn{color:var(--pend-fg)}
+
+/* Manual */
+.manual{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1.5rem;display:grid;gap:1.25rem;max-width:48rem}
+.manual ol{margin:0;padding-left:1.2rem;display:grid;gap:.9rem}
+.manual li p{color:var(--muted);font-size:.95rem;margin-top:.2rem}
+.note{border-left:3px solid var(--accent);padding:.2rem 0 .2rem 1rem;font-size:.95rem}
+
+/* Audiovisual */
+.av{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.av video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:6px;background:#000;margin-bottom:.4rem}
+.av .panel .ph{aspect-ratio:9/12;max-width:100%;border:1px dashed var(--line);border-radius:6px;display:grid;place-items:center;font:400 .75rem var(--mono);color:var(--muted);text-align:center;padding:.75rem;margin-bottom:.4rem}
+@media (max-width:820px){.av{grid-template-columns:1fr}}
+
+/* Experiencia */
+.exp{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:2rem}
+.exp ul{margin:.6rem 0 0;padding-left:1.1rem;display:grid;gap:.35rem}
+
+footer{border-top:1px solid var(--line);padding-block:3rem;display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:end}
+footer h2{font-size:1.8rem;font-weight:800}
+.contact{display:grid;gap:.4rem;font:400 .95rem var(--mono)}
+.copy{font:500 .75rem var(--mono);background:none;border:1px solid var(--line);border-radius:4px;padding:.2rem .5rem;color:var(--muted);cursor:pointer;margin-left:.4rem}
+</style>
+</head>
+<body>
+
+<header class="bar"><div class="wrap">
+  <strong>GUILLERMO ESPINOZA</strong>
+  <nav aria-label="Secciones">
+    <a href="#proyectos">Proyectos</a>
+    <a href="#metodo" class="opt">Método</a>
+    <a href="#capacidades" class="opt">Capacidades</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+
+<!-- 1. Presentación -->
+<section class="hero" aria-labelledby="t-hero">
+  <div>
+    <span class="label">Desarrollo asistido por IA · Soluciones digitales</span>
+    <h1 id="t-hero" style="margin-top:.8rem">Del problema a la solución: herramientas digitales construidas con inteligencia artificial.</h1>
+    <p class="sub">Desarrollo soluciones a partir de necesidades reales de negocio. Combino análisis de procesos, herramientas de IA generativa y desarrollo asistido para crear aplicaciones, sistemas e interfaces que funcionan.</p>
+    <div class="actions">
+      <a class="btn primary" href="#proyectos">Ver proyectos ↓</a>
+      <a class="btn" href="CV_Guillermo_Espinoza.pdf" target="_blank" rel="noopener">Descargar CV</a>
+      <a class="btn" href="#contacto">Contacto</a>
+    </div>
+  </div>
+  <div class="who">
+    <div><span class="label">Ubicación</span><p>Querétaro, México</p></div>
+    <div><span class="label">Enfoque</span><p>Identificar procesos, estructurarlos y convertirlos en herramientas</p></div>
+    <div><span class="label">Trabajo con</span><p>Claude Code, ChatGPT, NotebookLM, Codex, Antigravity</p></div>
+    <div><span class="label">Origen</span><p>Emprendedor; los proyectos nacieron en mis propios negocios</p></div>
+  </div>
+</section>
+
+<!-- 2. Proyectos -->
+<section class="block" id="proyectos">
+  <div class="head">
+    <span class="label">Proyectos reales</span>
+    <h2>Tres herramientas construidas para resolver problemas de mis negocios</h2>
+    <p>Cada caso explica el problema, lo que decidí, cómo usé la IA y en qué estado está hoy.</p>
+  </div>
+  <div class="cards">
+    <a class="card" href="#erp">
+      <div class="shot real"><img class="v" src="img/erp-21.webp" alt="Pantalla de venta del ERP Fabricarte con datos de ejemplo" loading="lazy"></div>
+      <div class="body">
+        <span class="label">01 · Sistema empresarial</span>
+        <h3>ERP Fabricarte</h3>
+        <p class="prob">Ordenar inventario, ventas y procesos administrativos de una fábrica de productos capilares.</p>
+        <div class="tags"><span class="tag">Claude Code</span></div>
+        <span class="go">Ver caso →</span>
+      </div>
+    </a>
+    <a class="card" href="#capilar">
+      <div class="shot real"><img class="v" src="img/dx-16.webp" alt="Pregunta de elasticidad en la app Diagnóstico Capilar" loading="lazy"></div>
+      <div class="body">
+        <span class="label">02 · Aplicación con lógica de decisión</span>
+        <h3>Diagnóstico Capilar</h3>
+        <p class="prob">Convertir criterios de diagnóstico capilar en un proceso digital ordenado y consistente.</p>
+        <div class="tags"><span class="tag">NotebookLM</span><span class="tag">Vercel</span></div>
+        <span class="go">Ver caso →</span>
+      </div>
+    </a>
+    <a class="card" href="#web">
+      <div class="shot real"><img src="img/web-escritorio.webp" alt="Portada del sitio Fabricarte en escritorio" loading="lazy"></div>
+      <div class="body">
+        <span class="label">03 · Experiencia web comercial</span>
+        <h3>Web Fabricarte</h3>
+        <p class="prob">Una presencia digital que ayude a un salón a elegir producto y calcular su ganancia.</p>
+        <div class="tags"><span class="tag">HTML · CSS · JS</span><span class="tag">Claude</span></div>
+        <span class="go">Ver caso →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Caso 01 ERP -->
+<article class="case" id="erp" aria-labelledby="t-erp">
+  <aside class="meta">
+    <div><span class="label">Proyecto 01</span><p>ERP Fabricarte</p></div>
+    <div><span class="label">Mi papel</span><p>Definí el problema, los módulos y las reglas; desarrollé con asistencia de IA y probé con la operación</p></div>
+    <div><span class="label">Herramientas</span><p>Claude Code · aplicación web instalable en Android</p></div>
+    <div><span class="label">Estado</span><p>Funcionando en la operación de Fabricarte</p></div>
+  </aside>
+  <div class="content">
+    <header>
+      <span class="label">Sistema empresarial</span>
+      <h2 id="t-erp">Un ERP propio para la operación de Fabricarte</h2>
+      <p>Fabricarte fabrica y vende productos capilares profesionales en Querétaro. La operación necesitaba ver en un solo lugar qué se produce, qué hay en inventario y qué se vende.</p>
+    </header>
+
+    <div class="step"><h3><span class="mono">01</span>Problema inicial</h3>
+      <p>Inventarios, ventas y procesos administrativos se controlaban por separado. Era difícil saber con certeza las existencias reales y el estado de cada operación.</p></div>
+
+    <div class="step"><h3><span class="mono">02</span>ERP propio y Odoo: dos cosas distintas</h3>
+      <div class="split">
+        <div class="panel"><h4>Odoo</h4><p>Lo uso a nivel funcional como usuario del sistema. Me sirvió para entender cómo se organiza un ERP: módulos, flujos y registros.</p></div>
+        <div class="panel"><h4>ERP Fabricarte</h4><p>Es un sistema propio, desarrollado con asistencia de IA y adaptado a los procesos específicos del negocio.</p></div>
+      </div></div>
+
+    <div class="step"><h3><span class="mono">03</span>Módulos y cómo se conectan</h3>
+      <div class="split">
+        <div class="panel"><h4>Punto de venta</h4><p>Registra la venta, calcula el costo, descuenta inventario y genera una nota de venta en PDF.</p></div>
+        <div class="panel"><h4>Inventario</h4><p>Existencias y valor del inventario, con alerta cuando un producto llega a su mínimo.</p></div>
+        <div class="panel"><h4>Producción</h4><p>Órdenes de producción: al iniciar descuenta los insumos y al terminar suma el producto al inventario.</p></div>
+        <div class="panel"><h4>Reportes y clientes</h4><p>Ventas del mes, comparativo contra el año anterior, ventas por producto y clientes por ciudad.</p></div>
+      </div>
+      <p style="margin-top:.75rem">Se instala como aplicación en Android para usarla desde el celular.</p></div>
+
+    <div class="step"><h3><span class="mono">04</span>Operación completa con datos de demostración</h3>
+      <p style="margin-bottom:.75rem">Cada operación actualiza a las demás; no hay que capturar lo mismo dos veces:</p>
+      <div class="flow" aria-label="Flujo de operación"><span>Orden de producción</span><i>→</i><span>Descuenta insumos</span><i>→</i><span>Suma producto terminado</span><i>→</i><span>Venta</span><i>→</i><span>Descuenta inventario</span><i>→</i><span>Reporte</span></div></div>
+
+    <div class="step"><h3><span class="mono">05</span>Una regla de negocio explicada</h3>
+      <p>Una orden de producción reserva y descuenta cada insumo de la fórmula (base, complejos, esencia, envase y tapa). Solo al marcarla como terminada entra el producto final al inventario. Así el inventario refleja lo que realmente existe en cada momento.</p></div>
+
+    <div class="gallery erp">
+      <figure class="tall"><video src="img/erp-presentacion.mp4" poster="img/erp-poster.webp" controls preload="none" playsinline></video><figcaption>Presentación del ERP (56 s)</figcaption></figure>
+      <figure class="tall"><img src="img/erp-21.webp" alt="Venta con nota en PDF" loading="lazy"><figcaption>Punto de venta</figcaption></figure>
+      <figure class="tall"><img src="img/erp-30.webp" alt="Orden de producción con insumos descontados" loading="lazy"><figcaption>Producción</figcaption></figure>
+      <figure class="tall"><img src="img/erp-37.webp" alt="Reporte comparativo contra el año anterior" loading="lazy"><figcaption>Reportes</figcaption></figure>
+    </div>
+    <p class="label" style="text-transform:none;letter-spacing:0">Video de presentación animado con datos de ejemplo; no contiene información real de clientes.</p>
+  </div>
+</article>
+
+<!-- Caso 02 Diagnóstico -->
+<article class="case" id="capilar" aria-labelledby="t-cap">
+  <aside class="meta">
+    <div><span class="label">Proyecto 02</span><p>Diagnóstico Capilar</p></div>
+    <div><span class="label">Mi papel</span><p>Investigué y estructuré el conocimiento, definí la lógica y diseñé el recorrido de usuario</p></div>
+    <div><span class="label">Herramientas</span><p>NotebookLM (conocimiento) · desarrollo asistido por IA · publicado en Vercel</p></div>
+    <div><span class="label">Estado</span><p>Funcionando · uso en salones de la marca Kouzlo</p></div>
+  </aside>
+  <div class="content">
+    <header>
+      <span class="label">Aplicación con lógica de decisión</span>
+      <h2 id="t-cap">Diagnóstico Capilar: del conocimiento experto a un recorrido digital</h2>
+      <p>Una herramienta para salones que guía la evaluación paso a paso, guarda el historial de cada clienta y sugiere cómo trabajar su cabello. Es una guía profesional, no un diagnóstico médico.</p>
+    </header>
+
+    <div class="step"><h3><span class="mono">01</span>Problema inicial</h3>
+      <p>Los criterios para evaluar el cabello existían, pero dispersos y dependían de quien hiciera la evaluación. Faltaba un proceso ordenado que diera el mismo resultado ante las mismas respuestas.</p></div>
+
+    <div class="step"><h3><span class="mono">02</span>Cuatro capas, separadas a propósito</h3>
+      <div class="split">
+        <div class="panel"><span class="label">Capa 1</span><h4>Conocimiento</h4><p>Investigado y organizado en NotebookLM: fuentes, criterios y categorías. Es trabajo previo; la aplicación no consulta NotebookLM en tiempo real.</p></div>
+        <div class="panel"><span class="label">Capa 2</span><h4>Reglas</h4><p>Los criterios convertidos en reglas dentro de la aplicación: qué combinación de respuestas lleva a qué resultado.</p></div>
+        <div class="panel"><span class="label">Capa 3</span><h4>Interfaz</h4><p>Formularios y pasos que la persona recorre desde el celular.</p></div>
+        <div class="panel"><span class="label">Capa 4</span><h4>Resultado</h4><p>La recomendación que produce el sistema a partir de las reglas.</p></div>
+      </div></div>
+
+    <div class="step"><h3><span class="mono">03</span>Lógica de decisiones</h3>
+      <p style="margin-bottom:.75rem">El recorrido tiene 6 pasos. En el paso 5 (estado físico) se evalúa la fibra con preguntas de opción única:</p>
+      <div class="split">
+        <div class="panel"><span class="label">A · Respuesta de la fibra</span><h4>Elasticidad y quiebre</h4><p>Vuelve normal · está rígida · chicle · se rompe rápido. Sin quiebre · solo puntas · medios y puntas · se rompe fácil.</p></div>
+        <div class="panel"><span class="label">B · Estado de la fibra</span><h4>Deslizamiento</h4><p>Desliza con facilidad · algo de fricción · se enreda o engancha.</p></div>
+        <div class="panel"><span class="label">Paso 6 · Resultado</span><h4>Sensibilizado · riesgo medio</h4><p>Con estas respuestas más historial de tinte y tacto seco, sugiere una guía térmica de 170–190 °C.</p></div>
+      </div>
+      <p style="margin-top:.75rem">El resultado no reemplaza al estilista: la app indica ajustarlo con la prueba de mechón y el criterio profesional.</p></div>
+
+    <div class="gallery erp">
+      <figure class="tall"><video src="img/dx-presentacion.mp4" poster="img/dx-16.webp" controls preload="none" playsinline></video><figcaption>Presentación de la app (45 s)</figcaption></figure>
+      <figure class="tall"><img src="img/dx-20.webp" alt="Pregunta de quiebre" loading="lazy"><figcaption>Paso 5 · quiebre</figcaption></figure>
+      <figure class="tall"><img src="img/dx-31.webp" alt="Respuestas registradas de la clienta" loading="lazy"><figcaption>Paso 6 · respuestas registradas</figcaption></figure>
+      <figure class="tall"><img src="img/dx-35.webp" alt="Resultado: sensibilizado, riesgo medio, 170 a 190 grados" loading="lazy"><figcaption>Resultado</figcaption></figure>
+    </div>
+    <p class="label" style="text-transform:none;letter-spacing:0">Pantallas de la app con una clienta de ejemplo.</p>
+  </div>
+</article>
+
+<!-- Caso 03 Web -->
+<article class="case" id="web" aria-labelledby="t-web">
+  <aside class="meta">
+    <div><span class="label">Proyecto 03</span><p>Web Fabricarte</p></div>
+    <div><span class="label">Mi papel</span><p>Arquitectura de contenido, decisiones de diseño, contenido comercial y revisión; código desarrollado con Claude</p></div>
+    <div><span class="label">Tecnología</span><p>HTML, CSS y JavaScript sin librerías</p></div>
+    <div><span class="label">Sitio</span><p><a href="https://fabricartemx.com/" target="_blank" rel="noopener">fabricartemx.com</a></p></div>
+  </aside>
+  <div class="content">
+    <header>
+      <span class="label">Experiencia web comercial</span>
+      <h2 id="t-web">Una web que ayuda al cliente a decidir, no solo a mirar</h2>
+      <p>El cliente de Fabricarte es un salón o estilista que necesita saber qué alisado usar y si le conviene. El sitio responde esas dos preguntas.</p>
+    </header>
+
+    <div class="step"><h3><span class="mono">01</span>Arquitectura de información</h3>
+      <p style="margin-bottom:.75rem">El orden de las secciones sigue las preguntas del cliente:</p>
+      <div class="flow"><span>¿Qué busco hacer?</span><i>→</i><span>¿Qué producto?</span><i>→</i><span>¿Cuánto gano?</span><i>→</i><span>¿Puedo poner mi marca?</span><i>→</i><span>¿Cómo me llega?</span></div></div>
+
+    <div class="step"><h3><span class="mono">02</span>Componentes funcionales</h3>
+      <div class="split">
+        <div class="panel"><h4>Selector de alisado</h4><p>Dos objetivos: alisar y reducir volumen, o hidratar y controlar el frizz.</p></div>
+        <div class="panel"><h4>Catálogo interactivo</h4><p>7 alisados con presentación y precio; al elegir uno cambia la imagen y el color de la sección.</p></div>
+        <div class="panel"><h4>Calculadora de ganancia</h4><p>Calcula costo por servicio, servicios por envase y ganancia.</p></div>
+        <div class="panel"><h4>Envases y envíos</h4><p>Presentaciones de 100 ml a 1 L y cotización de envío por WhatsApp.</p></div>
+      </div></div>
+
+    <div class="step"><h3><span class="mono">03</span>La lógica de la calculadora</h3>
+      <p style="margin-bottom:.75rem">Es la regla de negocio central del sitio. Los precios son por envase de 1 litro o 1 kg:</p>
+<pre class="code"><span class="c">// Costo del producto que se usa en un servicio</span>
+costo = precio_envase × ml_por_servicio ÷ 1000
+<span class="c">// Cuántos servicios salen de un envase</span>
+servicios = redondear_abajo(1000 ÷ ml_por_servicio)
+<span class="c">// Lo que gana el salón</span>
+ganancia_servicio = cobro − costo
+ganancia_envase   = ganancia_servicio × servicios</pre>
+      <p style="margin-top:.75rem">Ejemplo: Cirugía Capilar a $600, usando 100 ml y cobrando $1,500 → costo $60, 10 servicios, ganancia de $1,440 por servicio y $14,400 por envase.</p></div>
+
+    <div class="step"><h3><span class="mono">04</span>Responsive y móvil</h3>
+      <ul>
+        <li>En móvil el catálogo pasa de lista a fila deslizable con selección por “píldoras”.</li>
+        <li>Menú compacto con hoja desplegable; se cierra con un toque fuera o con Escape.</li>
+        <li>Las animaciones se desactivan si el dispositivo pide movimiento reducido.</li>
+      </ul></div>
+
+    <div class="gallery">
+      <figure class="wide"><img src="img/web-catalogo.webp" alt="Catálogo con un alisado seleccionado" loading="lazy"><figcaption>Catálogo: al elegir un alisado cambia la imagen, el precio y el color.</figcaption></figure>
+      <figure class="tall"><img src="img/web-movil.webp" alt="Portada en celular" loading="lazy"><figcaption>Celular</figcaption></figure>
+      <figure class="tall"><img src="img/web-movil-menu.webp" alt="Menú abierto en celular" loading="lazy"><figcaption>Menú en celular</figcaption></figure>
+    </div>
+  </div>
+</article>
+
+<!-- 6. Método -->
+<section class="block" id="metodo">
+  <div class="head">
+    <span class="label">Mi flujo de trabajo con IA</span>
+    <h2>Las herramientas siguen un proceso</h2>
+    <p>Cada herramienta tiene una función. Las decisiones sobre qué construir y si el resultado es correcto son mías.</p>
+  </div>
+  <ol class="pipeline">
+    <li><span class="mono">1</span><b>Identificar</b><small>Detectar el proceso que falla en la operación</small></li>
+    <li><span class="mono">2</span><b>Investigar</b><small>Reunir fuentes y criterios</small></li>
+    <li><span class="mono">3</span><b>Estructurar</b><small>Convertirlos en módulos y reglas</small></li>
+    <li><span class="mono">4</span><b>Desarrollar</b><small>Construir con agentes de IA</small></li>
+    <li><span class="mono">5</span><b>Probar</b><small>Usarlo con casos reales</small></li>
+    <li><span class="mono">6</span><b>Mejorar</b><small>Corregir lo que falla</small></li>
+    <li><span class="mono">7</span><b>Documentar</b><small>Explicarlo para quien lo usa</small></li>
+  </ol>
+  <div class="tools">
+    <div class="panel"><span class="label">Investigación y estructura</span><h4>ChatGPT · NotebookLM</h4><p>NotebookLM fue la base de conocimiento del Diagnóstico Capilar.</p></div>
+    <div class="panel"><span class="label">Diseño y desarrollo</span><h4>Claude Code</h4><p>Construcción y mejora de las aplicaciones y del sitio web.</p></div>
+    <div class="panel"><span class="label">Agentes de desarrollo</span><h4>Codex · Antigravity</h4><p>Agentes para desarrollar y revisar cambios en paralelo.</p></div>
+    <div class="panel"><span class="label">Documentación</span><h4>Manuales para usuarios</h4><p>Ejemplo abajo: cómo usar la calculadora de ganancia.</p></div>
+  </div>
+</section>
+
+<!-- 9. Documentación -->
+<section class="block" id="manual">
+  <div class="head">
+    <span class="label">Ejemplo de documentación · versión actual</span>
+    <h2>Manual: cómo calcular tu ganancia por servicio</h2>
+    <p>Escrito para una persona sin conocimientos técnicos. Corresponde a la calculadora del sitio Fabricarte.</p>
+  </div>
+  <div class="manual">
+    <ol>
+      <li><b>Abre la sección “Calcula tu ganancia”.</b><p>Está en el menú superior; en celular, toca el ícono de dos líneas.</p></li>
+      <li><b>Elige el alisado que vas a usar.</b><p>La lista muestra el nombre, el tamaño del envase y su precio.</p></li>
+      <li><b>Escribe cuánto producto usas en un servicio.</b><p>En mililitros o gramos. Si no lo sabes, empieza con 100.</p></li>
+      <li><b>Escribe cuánto cobras por servicio.</b><p>En pesos mexicanos, sin signos ni comas.</p></li>
+      <li><b>Lee el resultado.</b><p>El recuadro verde muestra tu ganancia por servicio, el costo del producto, cuántos servicios rinde un envase y tu ganancia total por envase. Se actualiza al escribir.</p></li>
+    </ol>
+    <p class="note"><b>Errores comunes.</b> Si escribes 0 en producto por servicio, “Servicios por envase” queda en 0. Los resultados son estimaciones: no incluyen otros gastos del salón.</p>
+    <figure class="wide"><img src="img/web-calculadora.webp" alt="Calculadora con Cirugía Capilar, 100 ml y cobro de 1500 pesos; ganancia de 1440 por servicio" loading="lazy"><figcaption>Resultado con el ejemplo: Cirugía Capilar, 100 ml, cobro de $1,500.</figcaption></figure>
+  </div>
+</section>
+
+<!-- 8. Capacidades -->
+<section class="block" id="capacidades">
+  <div class="head">
+    <span class="label">Capacidades</span>
+    <h2>Lo que aporto a un equipo</h2>
+    <p>Cada capacidad tiene un proyecto que la respalda.</p>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>Capacidad</th><th>Dónde se ve</th></tr></thead>
+    <tbody>
+      <tr><td>Detectar cuellos de botella en procesos administrativos</td><td>La operación de Fabricarte (más de 400 pedidos al año) dio origen al ERP y a la web.</td></tr>
+      <tr><td>Construir y mejorar aplicaciones con IA</td><td>ERP, Diagnóstico Capilar y web Fabricarte, desarrollados con Claude Code.</td></tr>
+      <tr><td>Convertir conocimiento experto en reglas</td><td>Criterios capilares organizados en NotebookLM y llevados a la lógica de la app.</td></tr>
+      <tr><td>Leer y explicar código</td><td>La lógica de la calculadora, explicada paso a paso en esta página.</td></tr>
+      <tr><td>Documentar para personas no técnicas</td><td>Manual de la calculadora de ganancia.</td></tr>
+      <tr><td>Automatizar reportes y cuidar datos</td><td>Reportes automatizados (Pharmaland) y validación de datos confidenciales (INE). Demostraciones sin datos reales.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 7. Audiovisual -->
+<section class="block" id="audiovisual">
+  <div class="head">
+    <span class="label">Complementario</span>
+    <h2>Producción audiovisual con IA</h2>
+    <p>Piezas para la comunicación de Fabricarte, editadas y animadas con Remotion y herramientas de IA generativa.</p>
+  </div>
+  <div class="av">
+    <figure class="panel"><video src="img/av1.mp4" poster="img/av1.webp" controls preload="none" playsinline></video><h4>Podcast con gráficos animados</h4><p>50 s · voces, subtítulos sincronizados y gráficos que explican el proceso del alisado.</p></figure>
+    <figure class="panel"><video src="img/av2.mp4" poster="img/av2.webp" controls preload="none" playsinline></video><h4>Clip de podcast</h4><p>23 s · edición de entrevista con subtítulos y mezcla de audio.</p></figure>
+    <figure class="panel"><video src="img/av3.mp4" poster="img/av3.webp" controls preload="none" playsinline></video><h4>Campaña de Halloween</h4><p>10 s · video generado con IA, sonido y subtítulos.</p></figure>
+  </div>
+</section>
+
+<!-- 11. Experiencia -->
+<section class="block" id="experiencia">
+  <div class="head">
+    <span class="label">Experiencia y formación</span>
+    <h2>De la operación a la tecnología</h2>
+  </div>
+  <div class="exp">
+    <div><h3>Experiencia</h3>
+      <ul>
+        <li>Fabricarte (2024–hoy): más de 400 pedidos coordinados entre ventas, producción, inventario y envíos.</li>
+        <li>Uso funcional de Odoo.</li>
+        <li>Desarrollo de herramientas propias con IA para resolver necesidades del negocio.</li>
+        <li>Aprendizaje autodidacta en desarrollo asistido por IA.</li>
+      </ul></div>
+    <div><h3>Formación e idiomas</h3>
+      <ul>
+        <li>Gerencia Pública, IUPG (Venezuela), 6.º semestre cursado.</li>
+        <li>Español nativo · Inglés básico, con lectura técnica apoyada en traducción.</li>
+        <li>Experiencia previa con datos y reportes automatizados (INE Venezuela 2020–2024, Pharmaland 2017–2019).</li>
+      </ul></div>
+  </div>
+</section>
+</main>
+
+<footer class="wrap" id="contacto">
+  <div><span class="label">Contacto</span><h2 style="margin-top:.5rem">Hablemos</h2></div>
+  <div class="contact">
+    <span>guillermospinoza@gmail.com <button class="copy" type="button" data-copy="guillermospinoza@gmail.com">Copiar</button></span>
+    <span>+52 442 453 6626</span>
+    <a href="https://linkedin.com/in/guillermo-espinoza-19a458341" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.dataset.copy;
+    var done=function(){b.textContent='Copiado';setTimeout(function(){b.textContent='Copiar'},1500)};
+    try{navigator.clipboard.writeText(t).then(done,function(){sel(b)})}catch(e){sel(b)}
+  });
+});
+function sel(b){var r=document.createRange();r.selectNodeContents(b.parentNode.firstChild);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+</script>
+</body>
+</html>
